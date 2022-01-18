@@ -1,0 +1,113 @@
+<template>
+  <v-container>
+    <v-row class="text-center">
+      <v-col class="mb-2">
+        <h1 class="display-2 font-weight-bold mb-3">
+          Welcome to </h1>
+          <h1 class="display-2 font-weight-bold mb-3">MyTokenStash</h1>
+          <h4 class="display-1 font-weight-bold mb-3">Solana Edition</h4>
+
+        <p class="mt-4 subheading font-weight-regular">
+          A place to view your NFT Stash
+        </p>
+        <br>
+        <br>
+        <v-row justify="center">
+          <v-btn @click="getOwnerAddress" v-show="$store.state.ownerAddress == 'no current user'" dark>Connect Solana Wallet</v-btn>
+          <p v-show="$store.state.ownerAddress !== 'no current user'">Welcome <br> <strong>{{$store.state.ownerAddress}}</strong> <br> This is your current wallet address.</p>
+        </v-row>
+        <div v-show="$store.state.ownerAddress !== 'no current user'">
+        <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Your Stash</v-btn>
+        </div>
+        <v-row justify="center">
+        <v-col cols="6">
+        <v-select
+          :items="this.$store.state.networkChoices"
+          label="Change network"
+          @change="setNetwork"
+          v-model="network"
+          max-width="200px"
+        ></v-select>
+        </v-col>
+        </v-row>
+      </v-col>
+
+      <v-col
+        class="mb-5"
+        cols="12"
+      >
+        <h2 class="headline font-weight-bold mb-6">
+          Solana Resources:
+        </h2>
+        <v-row justify="center">
+          <v-btn
+            v-for="(next, i) in whatsNext"
+            :key="i"
+            :href="next.href"
+            class="subheading mx-3 mb-4 font-weight-white"
+            color="#c00000"
+            target="_blank"
+            dark
+          >
+            {{ next.text }}
+          </v-btn >
+          
+        </v-row>
+        
+      </v-col>
+
+      
+
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+
+  import * as solanaWeb3 from '@solana/web3.js';
+  export default {
+    name: 'WelcomePage',
+
+    data: () => ({
+      ownerAddress: '',
+      whatsNext: [
+        {
+          text: 'Visit Solana',
+          href: 'https://solana.com',
+          target: '_blank'
+        },
+        {
+          text: 'Setup a Browser-Based Wallet',
+          href: 'https://phantom.app/',
+          target: '_blank'
+        },
+        {
+          text: 'Get an NFT on Solsea',
+          href: 'https://solsea.io/collection/616eee186c530ec596bb1027',
+          target: '_blank'
+        },
+      ],
+      network: ''
+    }),
+    mounted () {
+      console.log(solanaWeb3);
+      console.log(this.$store.state.ownerAddress);
+    },
+    methods: {
+      async getOwnerAddress(){
+        try {
+          const resp = await window.solana.connect();
+          this.$store.state.ownerAddress = resp.publicKey.toString()
+          console.log(resp.publicKey.toString())
+          // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo 
+        } catch (err) {
+          // { code: 4001, message: 'User rejected the request.' }
+        }
+        // true
+      },
+      setNetwork () {
+        this.$store.commit('updateNetwork', this.network)
+      }
+    }
+  }
+</script>
