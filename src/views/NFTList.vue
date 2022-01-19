@@ -11,6 +11,10 @@
         <v-btn color="blue" dark @click="reveal = true" v-show="!reveal">See More Details</v-btn>  
         <v-btn color="blue" dark @click="reveal = false" v-show="reveal">See Less Details</v-btn>  
         <v-row class="text-left">
+          <v-card dark class="mx-auto my-12" max-width="420" v-show="!hasTokens">
+            <v-card-title>Loading the Stash...</v-card-title>
+            <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
+          </v-card>
          <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" max-width="420" dark>
             <v-card-title>{{nft.nft.data.name}}</v-card-title>
             <v-card-text>
@@ -106,6 +110,7 @@
   import TransferToken from '../components/TransferToken.vue';
 
   export default {
+    hasTokens: false,
     components: {
     TransferToken
     },
@@ -155,6 +160,7 @@
         try {
             this.nfts.forEach(nft => axios.get(nft.data.uri).then(res => { this.solanaNftMetadata.push({nft,res}); } ));
             console.log("metacapture",this.solanaNftMetadata)
+            this.hasTokens = true;
         } catch (err) {
             this.nfts = err
         }
