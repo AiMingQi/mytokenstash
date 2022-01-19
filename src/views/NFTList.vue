@@ -1,6 +1,5 @@
 <template>
-  <div class="rules">
-    <v-container>
+  <v-container>
     <v-col
         class="mb-5"
         cols="12"
@@ -8,13 +7,20 @@
       <div v-show="hasTokens">
         <v-btn color="blue" dark @click="reveal = true" v-show="!reveal">See More Details</v-btn>  
         <v-btn color="blue" dark @click="reveal = false" v-show="reveal">See Less Details</v-btn> 
+        <v-slider
+          v-model="cardWidth"
+          hint="Im a hint"
+          max="1920"
+          min="156"
+          color="#c00000"
+        ></v-slider>
       </div>
         <v-row class="text-left">
           <v-card dark class="mx-auto my-12" max-width="420" v-show="!hasTokens">
             <v-card-title>Loading the Stash...</v-card-title>
             <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
           </v-card>
-         <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" max-width="420" dark>
+         <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" :width="cardWidth" dark>
             <v-card-title>{{nft.nft.data.name}}</v-card-title>
             <v-card-text>
             <v-img 
@@ -94,11 +100,9 @@
             </v-card>
           
         </v-overlay>
-        </v-row>
-      </v-col>
-     
+      </v-row>
+    </v-col>
   </v-container>
-  </div>
 </template>
 
 <script>
@@ -115,6 +119,7 @@
     TransferToken
     },
     data: () => ({
+      cardWidth: 500,
       validTransferAddress: false,
       overlay: false,
       zIndex: 0,
