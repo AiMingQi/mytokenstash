@@ -32,6 +32,9 @@ export default new Vuex.Store({
   mutations: {
     updateNetwork (state, network) {
       state.network = network
+    },
+    updateOwnerAddress (state, ownerAddress) {
+      state.ownerAddress = ownerAddress
     }
   },
   actions: {

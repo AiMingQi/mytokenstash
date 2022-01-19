@@ -6,6 +6,7 @@
     dark
     >
       <div class="d-flex align-center">
+        <a href="https://the-game.fun" target="_blank">
         <v-img
           alt="the-game logo"
           class="shrink mr-2"
@@ -14,6 +15,7 @@
           transition="scale-transition"
           width="40"
         />
+        </a>
       </div>
       <v-btn class="mx-3" to="/">Home</v-btn>
       <v-spacer></v-spacer>
