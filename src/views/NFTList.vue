@@ -5,11 +5,10 @@
         class="mb-5"
         cols="12"
       >
-        <h2 class="headline font-weight-bold mb-6">
-          Your NFT Stash
-        </h2>
+      <div v-show="hasTokens">
         <v-btn color="blue" dark @click="reveal = true" v-show="!reveal">See More Details</v-btn>  
-        <v-btn color="blue" dark @click="reveal = false" v-show="reveal">See Less Details</v-btn>  
+        <v-btn color="blue" dark @click="reveal = false" v-show="reveal">See Less Details</v-btn> 
+      </div>
         <v-row class="text-left">
           <v-card dark class="mx-auto my-12" max-width="420" v-show="!hasTokens">
             <v-card-title>Loading the Stash...</v-card-title>
@@ -97,6 +96,7 @@
         </v-overlay>
         </v-row>
       </v-col>
+     
   </v-container>
   </div>
 </template>

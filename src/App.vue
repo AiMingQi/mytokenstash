@@ -38,8 +38,8 @@
       <v-spacer></v-spacer>
       <v-btn color="#light-blue" dark @click="getOwnerAddress" v-show="$store.state.ownerAddress == 'no current user'">Connect Wallet</v-btn>
       <v-btn color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== 'no current user'">Clear Wallet</v-btn>
-      <p v-show="$store.state.ownerAddress !== 'no current user'">{{$store.state.ownerAddress}}</p>
       <v-spacer></v-spacer>
+      <p v-show="$store.state.ownerAddress !== 'no current user'">{{$store.state.ownerAddress}}</p>
       <v-spacer></v-spacer>
       <p>version: <strong>1.0</strong></p>
       <v-spacer></v-spacer>
