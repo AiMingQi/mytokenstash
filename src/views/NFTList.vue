@@ -15,7 +15,7 @@
             <v-card-title>{{nft.nft.data.name}}</v-card-title>
             <v-card-text>
             <v-img 
-            lazy-src="..\assets\game-baby.png"
+            lazy-src="src/assets/game-baby.png"
             :src="nft.res.data.image"
             >
             <template v-slot:placeholder>
