@@ -98,7 +98,7 @@
         <v-card-subtitle><h4>NFT Collection</h4></v-card-subtitle>
         <v-card-text>
           <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
-            <v-img src="..\assets\ponderMonster-Solsea.jpg"/>
+            <v-img src="https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU"/>
           </a>
         </v-card-text>
       </v-card>
