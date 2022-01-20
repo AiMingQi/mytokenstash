@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col cols="4" class="mb-2">
+      <v-col cols="12" sm="4" class="mb-2">
         <v-card>
           <v-card-title>
           </v-card-title>
           <v-row>
-            <v-col cols="3">
+            <v-col cols="12" sm="3">
               <v-img class="ma-12" src="..\assets\logo.png" color="black" width="100px" height="100px" alt="logo"/>
             </v-col>
             <v-col cols="9">
@@ -34,7 +34,7 @@
                 label="Enter a Valid Solana Address"
               ></v-text-field>
         </v-col>
-            <v-col cols="4">
+            <v-col cols="12" sm="4">
               <v-btn color="light-blue" dark @click="setOwnerAddress"> Lookup Account </v-btn>
             </v-col>
           </v-row>
@@ -49,7 +49,7 @@
             <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
             </div>
           <v-row justify="center">
-          <v-col cols="6">
+          <v-col cols="12" sm="6">
           <v-select
             :items="this.$store.state.networkChoices"
             label="Change network"
@@ -59,6 +59,26 @@
           ></v-select>
           </v-col>
           </v-row>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="4">
+      <v-card dark>
+        <v-card-title>Featured NFT Collection</v-card-title>
+        <v-card-text>
+          <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
+            <v-img src="https://content.solsea.io/files/preview/1638401113848-532065640.png"/>
+          </a>
+        </v-card-text>
+      </v-card>
+      </v-col>
+      <v-col cols="12" sm="4" >
+      <v-card>
+        <v-card-title>Featured NFT Games</v-card-title>
+        <v-card-text>
+          <a href="https://the-game.fun" target="_blank">
+            <v-img src="..\assets\logo.svg"/>
+          </a>
+        </v-card-text>
         </v-card>
       </v-col>
     </v-row>

@@ -41,7 +41,7 @@
       <v-spacer></v-spacer>
       <p v-show="$store.state.ownerAddress !== 'no current user'">{{$store.state.ownerAddress}}</p>
       <v-spacer></v-spacer>
-      <p>version: <strong>1.0</strong></p>
+      <p>version: <strong>1.4</strong></p>
       <v-spacer></v-spacer>
       <a href="https://github.com/AiMingQi/mytokenstash" target="_blank"><v-icon x-large>mdi-github</v-icon></a> 
     </v-footer>
