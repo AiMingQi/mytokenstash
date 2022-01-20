@@ -6,7 +6,7 @@
             <v-card-title>Loading the Stash...</v-card-title>
             <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
           </v-card>
-            <v-carousel 
+            <v-carousel
                 :cycle="cycle"
                 :interval="slideInterval"
                 height="100%"
@@ -32,25 +32,27 @@
             >
                 <v-sheet
                     :color="color"
-                    tile
+                    class="py-5 mb-10"
                 >
-                    <v-img 
+                    <v-img
                     lazy-src="src/assets/game-baby.png"
                     :src="nft.res.data.image"
                     :height="imageHeight"
                     aspect-ratio="1"
                     contain
-                    class="ma-1"
+                    class="ma-5"
                     ></v-img>
                 </v-sheet>
             </v-carousel-item>
         </v-carousel>
-        <v-card class="mt-5 mx-auto" width="80%">
+        <v-card class="mx-auto mt-5" width="80%">
         <v-row>
         <v-col cols="12" sm="4">
         <v-btn class="ma-5" to="/nft-list" dark>List Mode</v-btn>
         <v-btn class="ma-5" @click="cycle = true" v-show="!cycle" dark>Start Cycle</v-btn>
         <v-btn class="ma-5" @click="cycle = false" v-show="cycle" dark>Stop Cycle</v-btn>
+        <v-btn class="ma-5" color="black" @click="color = 'black'" v-show="!cycle" dark>Black BG</v-btn>
+        <v-btn class="ma-5" color="white" @click="color = 'white'" v-show="!cycle">White BG</v-btn>
         </v-col>
         <v-col cols="12" sm="3">
         Image Height: {{imageHeight}} px

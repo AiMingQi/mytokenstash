@@ -36,7 +36,7 @@
     <v-main>
       <router-view/>
     </v-main>
-    <v-footer dark app>
+    <v-footer dark>
       <p>© 2022 MyTokenStash </p>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
