@@ -44,7 +44,7 @@
       <v-spacer></v-spacer>
       <p>version: <strong>1.6</strong></p>
       <v-spacer></v-spacer>
-      <a href="https://github.com/AiMingQi/mytokenstash" target="_blank"><v-icon x-large>mdi-github</v-icon></a> 
+      <a href="https://github.com/AiMingQi/mytokenstash" target="_blank" rel="noopener"><v-icon x-large >mdi-github</v-icon></a> 
     </v-footer>
   </v-app>
 </template>

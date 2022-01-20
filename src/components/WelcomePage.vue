@@ -63,7 +63,7 @@
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12">
       <v-card dark>
-        <v-card-title>Featured</v-card-title>
+        <v-card-title><h1>Featured</h1> </v-card-title>
         <v-card-subtitle>NFT Collection</v-card-subtitle>
         <v-card-text>
           <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
@@ -74,7 +74,7 @@
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
       <v-card>
-        <v-card-title>Featured</v-card-title>
+        <v-card-title><h1>Featured</h1></v-card-title>
         <v-card-subtitle>NFT Game</v-card-subtitle>
         <v-card-text>
           <a href="https://the-game.fun" target="_blank">
