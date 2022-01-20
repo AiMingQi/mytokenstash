@@ -4,22 +4,25 @@
     app
     color="#c00000"
     dark
+    hide-on-scroll
     >
-      <div class="d-flex align-center">
-        <a href="https://the-game.fun" target="_blank">
+      <div class="d-flex align-center" >
+       <v-btn icon>
         <v-img
           alt="the-game logo"
           class="shrink mr-2"
           contain
-          :src="require('./assets/logo.svg')"
+          :src="require('./assets/logo.png')"
           transition="scale-transition"
           width="40"
+          to="/"
         />
-        </a>
+        </v-btn>
       </div>
-      <v-btn class="mx-3" to="/">Home</v-btn>
+      <v-btn class="mx-3 d-none d-sm-flex" to="/" >Home</v-btn>
       <v-spacer></v-spacer>
-      {{this.$store.state.network}}
+      <v-btn class="mx-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== 'no current user'">Clear Wallet</v-btn>
+      <p v-show="$store.state.ownerAddress !== 'no current user'" class="d-none d-sm-flex">{{$store.state.ownerAddress}}</p>
       <v-spacer></v-spacer>
       <v-btn
         href="https://www.coinbase.com/join/crumb_8"
@@ -33,13 +36,11 @@
     <v-main>
       <router-view/>
     </v-main>
-    <v-footer dark>
+    <v-footer dark app>
       <p>© 2022 MyTokenStash </p>
       <v-spacer></v-spacer>
-      <v-btn color="#light-blue" dark @click="getOwnerAddress" v-show="$store.state.ownerAddress == 'no current user'">Connect Wallet</v-btn>
-      <v-btn color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== 'no current user'">Clear Wallet</v-btn>
       <v-spacer></v-spacer>
-      <p v-show="$store.state.ownerAddress !== 'no current user'">{{$store.state.ownerAddress}}</p>
+      {{this.$store.state.network}}
       <v-spacer></v-spacer>
       <p>version: <strong>1.5</strong></p>
       <v-spacer></v-spacer>

@@ -11,12 +11,12 @@ const routes = [
     component: Home
   },
   {
-    path: '/rules',
-    name: 'Rules',
+    path: '/nft-carousel',
+    name: 'Carousel',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "rules" */ '../views/Rules.vue')
+    component: () => import(/* webpackChunkName: "Carousel" */ '../views/NFTCarousel.vue')
   },
   {
     path: '/nft-list',

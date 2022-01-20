@@ -7,6 +7,8 @@
       <div v-show="hasTokens">
         <v-btn color="blue" dark @click="reveal = true" v-show="!reveal">See More Details</v-btn>  
         <v-btn color="blue" dark @click="reveal = false" v-show="reveal">See Less Details</v-btn> 
+        <v-btn class="mx-5" to="/nft-carousel" dark>Carousel Mode</v-btn>
+
         <v-slider
           v-model="cardWidth"
           hint="Im a hint"
