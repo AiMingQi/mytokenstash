@@ -1,15 +1,16 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row class="text-center">
-      <v-col cols="12" lg="4" sm="12" class="mb-2">
-        <v-card>
-          <v-card-title>
-          </v-card-title>
+    
+      <v-col cols="12" lg="5" sm="12" class="mb-2">
+        <v-card class="d-flex">
           <v-row justify="center">
-            <v-col cols="12" sm="4" justify="center" >
-              <v-img class="my-5 mx-auto" src="..\assets\logo.png" color="black" width="100px" height="100px" alt="logo"/>
+            <v-col cols="12" sm="3">
+            <div>
+              <v-img class="ma-5" src="..\assets\MyTokenStash-Logo.svg" max-width="240px" color="black" alt="logo"/>
+            </div>
             </v-col>
-            <v-col cols="12" sm="8">
+            <v-col cols="12" sm="9">
                 <h1 class="display-2 font-weight-bold mb-3">
                   Welcome to </h1>
                   <h1 class="display-2 font-weight-bold mb-3">MyTokenStash</h1>
@@ -34,6 +35,8 @@
                 label="Enter a Valid Solana Address"
               ></v-text-field>
         </v-col>
+
+
             <v-col cols="12" md="6" sm="4">
               <v-btn color="light-blue" dark @click="setOwnerAddress"> Lookup Account </v-btn>
             </v-col>
@@ -49,6 +52,7 @@
             <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
             </div>
           <v-row justify="center">
+
           <v-col cols="12" sm="6">
           <v-select
             :items="this.$store.state.networkChoices"
@@ -61,21 +65,25 @@
           </v-row>
         </v-card>
       </v-col>
+
+        <v-col cols="12" lg="7" sm="12">
+      <v-row>
       <v-col cols="12" lg="4" md="6" sm="12">
       <v-card dark>
-        <v-card-title><h1>Featured</h1> </v-card-title>
-        <v-card-subtitle>NFT Collection</v-card-subtitle>
+        <v-card-title><h3>Featured</h3> </v-card-title>
+        <v-card-subtitle><h4>NFT</h4></v-card-subtitle>
         <v-card-text>
-          <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
-            <v-img src="https://content.solsea.io/files/preview/1638401113848-532065640.png"/>
+          <a href="https://solsea.io/nft/8gXneZeFoKbKrSsbZCdD4SW6upn7e6EHoJTiM6cF3jd8" target="_blank">
+            <v-img src="https://www.arweave.net/b9rL4huLrx5KrBtooLPkIG5TAzrH1YA7WY9N92oO-Ps?ext=PNG"/>
           </a>
         </v-card-text>
       </v-card>
       </v-col>
+
       <v-col cols="12" lg="4" md="6" sm="12" >
       <v-card>
-        <v-card-title><h1>Featured</h1></v-card-title>
-        <v-card-subtitle>NFT Game</v-card-subtitle>
+        <v-card-title><h3>Featured</h3></v-card-title>
+        <v-card-subtitle><h4>NFT Game</h4></v-card-subtitle>
         <v-card-text>
           <a href="https://the-game.fun" target="_blank">
             <v-img src="..\assets\logo.svg"/>
@@ -83,6 +91,21 @@
         </v-card-text>
         </v-card>
       </v-col>
+
+      <v-col cols="12" lg="4" md="6" sm="12">
+      <v-card dark>
+        <v-card-title><h3>Featured</h3> </v-card-title>
+        <v-card-subtitle><h4>NFT Collection</h4></v-card-subtitle>
+        <v-card-text>
+          <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
+            <v-img src="..\assets\ponderMonster-Solsea.jpg"/>
+          </a>
+        </v-card-text>
+      </v-card>
+       </v-col>
+       </v-row>
+       </v-col>
+
     </v-row>
   </v-container>
 </template>
