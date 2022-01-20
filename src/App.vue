@@ -19,7 +19,7 @@
       </div>
       <v-btn class="mx-3" to="/">Home</v-btn>
       <v-spacer></v-spacer>
-      Current Network: {{this.$store.state.network}}
+      {{this.$store.state.network}}
       <v-spacer></v-spacer>
       <v-btn
         href="https://www.coinbase.com/join/crumb_8"

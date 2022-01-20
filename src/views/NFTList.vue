@@ -52,9 +52,8 @@
                 </v-card-text>
             <v-card-actions>
               <v-btn color="green" dark :href="nft.res.data.image" target="_blank">Image Source</v-btn>  
-            <v-spacer></v-spacer>
-              <v-btn color="purple" dark @click="overlay = !overlay">Transfer NFT</v-btn>  
-            
+              <v-spacer></v-spacer>
+              
             </v-card-actions>
             <v-expand-transition>
             <v-card

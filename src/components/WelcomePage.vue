@@ -1,15 +1,15 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col cols="12" sm="4" class="mb-2">
+      <v-col cols="12" lg="4" sm="12" class="mb-2">
         <v-card>
           <v-card-title>
           </v-card-title>
-          <v-row>
-            <v-col cols="12" sm="3">
-              <v-img class="ma-12" src="..\assets\logo.png" color="black" width="100px" height="100px" alt="logo"/>
+          <v-row justify="center">
+            <v-col cols="12" sm="4" justify="center" >
+              <v-img class="my-5 mx-auto" src="..\assets\logo.png" color="black" width="100px" height="100px" alt="logo"/>
             </v-col>
-            <v-col cols="9">
+            <v-col cols="12" sm="8">
                 <h1 class="display-2 font-weight-bold mb-3">
                   Welcome to </h1>
                   <h1 class="display-2 font-weight-bold mb-3">MyTokenStash</h1>
@@ -34,7 +34,7 @@
                 label="Enter a Valid Solana Address"
               ></v-text-field>
         </v-col>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" md="6" sm="4">
               <v-btn color="light-blue" dark @click="setOwnerAddress"> Lookup Account </v-btn>
             </v-col>
           </v-row>
@@ -49,7 +49,7 @@
             <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
             </div>
           <v-row justify="center">
-          <v-col cols="12" sm="6">
+          <v-col cols="12" sm="12">
           <v-select
             :items="this.$store.state.networkChoices"
             label="Change network"
@@ -61,7 +61,7 @@
           </v-row>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" lg="4" md="6" sm="12">
       <v-card dark>
         <v-card-title>Featured NFT Collection</v-card-title>
         <v-card-text>
@@ -71,7 +71,7 @@
         </v-card-text>
       </v-card>
       </v-col>
-      <v-col cols="12" sm="4" >
+      <v-col cols="12" lg="4" md="6" sm="12" >
       <v-card>
         <v-card-title>Featured NFT Games</v-card-title>
         <v-card-text>
