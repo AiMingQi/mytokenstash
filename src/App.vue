@@ -42,9 +42,9 @@
       <v-spacer></v-spacer>
       {{this.$store.state.network}}
       <v-spacer></v-spacer>
-      <p>version: <strong>1.7</strong></p>
+      <p>version: <strong>0.7</strong></p>
       <v-spacer></v-spacer>
-      <a href="https://github.com/AiMingQi/mytokenstash" target="_blank" rel="noopener"><v-icon x-large >mdi-github</v-icon></a> 
+      <v-btn to="/privacy-policy">Privacy Policy</v-btn>
     </v-footer>
   </v-app>
 </template>

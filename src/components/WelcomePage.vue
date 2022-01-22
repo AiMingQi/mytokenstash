@@ -7,7 +7,7 @@
           <v-row justify="center">
             <v-col cols="12" sm="3">
             <div>
-              <v-img class="ma-5" src="..\assets\MyTokenStash-Logo.svg" max-width="240px" color="black" alt="logo"/>
+              <v-img class="ma-5" src="https://gateway.pinata.cloud/ipfs/QmNk52WAqD6FmebfiXepvoLM7JQC6NPgSDEhx6re4mHEtj" max-width="240px" color="black" alt="logo"/>
             </div>
             </v-col>
             <v-col cols="12" sm="9">
