@@ -7,7 +7,7 @@
     hide-on-scroll
     >
       <div class="d-flex align-center" >
-       <v-btn icon>
+       <v-btn to="/" icon>
         <v-img
           alt="the-game logo"
           class="shrink mr-2"
@@ -15,7 +15,7 @@
           :src="require('./assets/logo.png')"
           transition="scale-transition"
           width="40"
-          to="/"
+          
         />
         </v-btn>
       </div>
