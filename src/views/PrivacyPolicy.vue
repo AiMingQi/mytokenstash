@@ -39,7 +39,14 @@
           </v-card-title>
           <v-card-text>
             <h3><a class="text--red" href="https://github.com/aimingqi/mytokenstash" target="_blank"><v-icon x-large>mdi-github</v-icon></a> All code is found at our public github repo.</h3>
-            
+          </v-card-text>
+        </v-card>
+        <v-card class="ma-3">
+          <v-card-title>
+            Previous Versions:
+          </v-card-title>
+          <v-card-text>
+            <h3><a href="https://gateway.pinata.cloud/ipfs/QmRLmsKmYBJGdUbhyfJwseVbv5XC1Y5xxvvmv98NKfDFTd/?preview=1" target="_blank"></a> Version: 0.8</h3>
           </v-card-text>
         </v-card>
       </v-col>
