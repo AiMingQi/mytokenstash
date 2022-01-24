@@ -42,7 +42,7 @@
       <v-spacer></v-spacer>
       {{this.$store.state.network}}
       <v-spacer></v-spacer>
-      <p>version: <strong>0.8</strong></p>
+      <p>version: <strong>0.8.1</strong></p>
       <v-spacer></v-spacer>
       <v-btn to="/privacy-policy">Privacy Policy</v-btn>
     </v-footer>
@@ -88,7 +88,8 @@
   color: #000000;
 }
 .v-application a {
-  color: #ffffff !important;
+  color: #c00000 !important;
+    font-weight: bold;
 }
 
 #nav {
@@ -96,10 +97,10 @@
 
     a {
     font-weight: bold;
-    color: #ffffff;
+    color: #c00000;
 
     &.router-link-exact-active {
-      color: #ffffff;
+      color: #c00000;
     }
   }
 }

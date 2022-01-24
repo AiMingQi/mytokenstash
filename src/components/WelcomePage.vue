@@ -68,41 +68,18 @@
 
         <v-col cols="12" lg="7" sm="12">
       <v-row>
-      <v-col cols="12" lg="4" md="6" sm="12">
-      <v-card dark>
+      <v-col cols="12" lg="4" md="6" sm="12" v-for="feature in features" :key="feature.priority">
+      <v-card :dark="feature.cardTheme">
         <v-card-title><h3>Featured</h3> </v-card-title>
-        <v-card-subtitle><h4>NFT</h4></v-card-subtitle>
+        <v-card-subtitle><h4>{{feature.type}}</h4></v-card-subtitle>
         <v-card-text>
-          <a href="https://solsea.io/nft/8gXneZeFoKbKrSsbZCdD4SW6upn7e6EHoJTiM6cF3jd8" target="_blank">
-            <v-img src="https://www.arweave.net/b9rL4huLrx5KrBtooLPkIG5TAzrH1YA7WY9N92oO-Ps?ext=PNG"/>
+          <a :href="feature.linkUrl" target="_blank">
+            <v-img :src="feature.imageUrl"/>
           </a>
         </v-card-text>
       </v-card>
       </v-col>
 
-      <v-col cols="12" lg="4" md="6" sm="12" >
-      <v-card>
-        <v-card-title><h3>Featured</h3></v-card-title>
-        <v-card-subtitle><h4>NFT Game</h4></v-card-subtitle>
-        <v-card-text>
-          <a href="https://the-game.fun" target="_blank">
-            <v-img src="..\assets\logo.svg"/>
-          </a>
-        </v-card-text>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12" lg="4" md="6" sm="12">
-      <v-card dark>
-        <v-card-title><h3>Featured</h3> </v-card-title>
-        <v-card-subtitle><h4>NFT Collection</h4></v-card-subtitle>
-        <v-card-text>
-          <a href="https://solsea.io/collection/616eee186c530ec596bb1027" target="_blank">
-            <v-img src="https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU"/>
-          </a>
-        </v-card-text>
-      </v-card>
-       </v-col>
        </v-row>
        </v-col>
 
@@ -123,7 +100,51 @@
           counter: value => value.length == 44 || 'Must be a Valid Solana Address',
         },
       network: '',
-      LookupAccount: ''
+      LookupAccount: '',
+      features: [
+        { 
+          cardTheme: true,
+          priority: "1",
+          type: 'NFT',
+          linkUrl: 'https://solsea.io/nft/Ez8ETsDyoS3PB31rNMCsxKE5RjyJKALN95J44APGfs2c',
+          imageUrl: 'https://www.arweave.net/grpozyPCME2j5kLdHqBEMdf-uh0Sqxvi-zpazOh6MPg?ext=PNG',
+        },
+        { 
+          cardTheme: false,
+          priority: "2",
+          type: 'NFT Game',
+          linkUrl: 'https://the-game.fun',
+          imageUrl: 'https://gateway.pinata.cloud/ipfs/Qmer8dA6z1ooMiJ86dNCZQJvypkseGKBrpSEuSMSm9FZEz',
+        },
+        { 
+          cardTheme: true,
+          priority: "3",
+          type: 'NFT Collection',
+          linkUrl: 'https://solsea.io/collection/616eee186c530ec596bb1027',
+          imageUrl: 'https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU',
+        },
+        { 
+          cardTheme: false,
+          priority: "4",
+          type: 'NFT',
+          linkUrl: 'https://solsea.io/nft/8gXneZeFoKbKrSsbZCdD4SW6upn7e6EHoJTiM6cF3jd8',
+          imageUrl: 'https://www.arweave.net/b9rL4huLrx5KrBtooLPkIG5TAzrH1YA7WY9N92oO-Ps?ext=PNG',
+        },
+        { 
+          cardTheme: true,
+          priority: "5",
+          type: 'NFT',
+          linkUrl: 'https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/60768586216831178033855531481083396667282735752358900668981410474861422182401',
+          imageUrl: 'https://lh3.googleusercontent.com/AT-7vl8VH_TjgQG-zRMDPirf6gm0ZwuPYx9D8MzFJZHxKbGPAjd_yG7grVSPKgjB6uiw412TG5Psmo_6DMKb8ANbTzgvnCtfnK-xjw=s0',
+        },
+        { 
+          cardTheme: false,
+          priority: "6",
+          type: 'NFT',
+          linkUrl: 'https://solsea.io/nft/2qTT2PRutEcG2LFC282KnerS91fsbit2QFETp99UxhCn',
+          imageUrl: 'https://www.arweave.net/rUGUiAU19hqoW6Rdt_VvPrMzTrTqW--MzIi9pt0jG_k?ext=PNG',
+        },
+      ]
     }),
     mounted () {
       console.log(solanaWeb3);
