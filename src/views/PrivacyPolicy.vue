@@ -43,10 +43,10 @@
         </v-card>
         <v-card class="ma-3">
           <v-card-title>
-            Previous Versions:
+            Previous Site Versions:
           </v-card-title>
           <v-card-text>
-            <h3><a href="https://gateway.pinata.cloud/ipfs/QmRLmsKmYBJGdUbhyfJwseVbv5XC1Y5xxvvmv98NKfDFTd/?preview=1" target="_blank"></a> Version: 0.8</h3>
+            <h3 class="my-3" v-for="version in ipfsVersions" :key="version.number">Version:  <a :href="'https://gateway.pinata.cloud/ipfs/' + version.siteHash" target="_blank">{{version.number}}</a> CID: {{version.siteHash}} </h3>
           </v-card-text>
         </v-card>
       </v-col>
@@ -54,6 +54,25 @@
   </v-container>
   </div>
 </template>
+
+
+
+<script>
+
+import ipfsVersions from "../previousSiteVersions.json"
+  export default {
+    data: () => ({
+        ipfsVersions: ipfsVersions,
+    }),
+    mounted () {
+        console.log(this.ipfs)
+    }
+  }
+</script>
+
+
+
+
 
 <style>
 a {color: #c00000 !important;}
