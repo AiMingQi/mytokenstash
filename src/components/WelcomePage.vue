@@ -70,7 +70,7 @@
       <v-row>
       <v-col cols="12" lg="4" md="6" sm="12" v-for="feature in features" :key="feature.priority">
       <v-card :dark="feature.cardTheme">
-        <v-card-title><h3>Featured</h3> </v-card-title>
+        <v-card-title><h3>Feature: {{feature.hype}}</h3> </v-card-title>
         <v-card-subtitle><h4>{{feature.type}}</h4></v-card-subtitle>
         <v-card-text>
           <a :href="feature.linkUrl" target="_blank">
@@ -103,6 +103,7 @@
       LookupAccount: '',
       features: [
         { 
+          hype: "Affordable",
           cardTheme: true,
           priority: "1",
           type: 'NFT',
@@ -110,6 +111,7 @@
           imageUrl: 'https://www.arweave.net/grpozyPCME2j5kLdHqBEMdf-uh0Sqxvi-zpazOh6MPg?ext=PNG',
         },
         { 
+          hype: "Mysterious",
           cardTheme: false,
           priority: "2",
           type: 'NFT Game',
@@ -117,6 +119,7 @@
           imageUrl: 'https://gateway.pinata.cloud/ipfs/Qmer8dA6z1ooMiJ86dNCZQJvypkseGKBrpSEuSMSm9FZEz',
         },
         { 
+          hype: "High Art",
           cardTheme: true,
           priority: "3",
           type: 'NFT Collection',
@@ -124,6 +127,7 @@
           imageUrl: 'https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU',
         },
         { 
+          hype: "Game Changer",
           cardTheme: false,
           priority: "4",
           type: 'NFT',
@@ -131,6 +135,7 @@
           imageUrl: 'https://www.arweave.net/b9rL4huLrx5KrBtooLPkIG5TAzrH1YA7WY9N92oO-Ps?ext=PNG',
         },
         { 
+          hype: "Ridiculous",
           cardTheme: true,
           priority: "5",
           type: 'NFT',
@@ -138,6 +143,7 @@
           imageUrl: 'https://lh3.googleusercontent.com/AT-7vl8VH_TjgQG-zRMDPirf6gm0ZwuPYx9D8MzFJZHxKbGPAjd_yG7grVSPKgjB6uiw412TG5Psmo_6DMKb8ANbTzgvnCtfnK-xjw=s0',
         },
         { 
+          hype: "Honor Artist",
           cardTheme: false,
           priority: "6",
           type: 'NFT',
