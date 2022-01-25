@@ -7,7 +7,7 @@
     hide-on-scroll
     >
       <div class="d-flex align-center" >
-       <v-btn to="/" icon>
+       <v-btn to="/" icon plain>
         <v-img
           alt="the-game logo"
           class="shrink mr-2"
@@ -88,7 +88,7 @@
   color: #000000;
 }
 .v-application a {
-  color: #c00000 !important;
+  color: #ffffff;
     font-weight: bold;
 }
 
@@ -97,10 +97,10 @@
 
     a {
     font-weight: bold;
-    color: #c00000;
+    color: #ffffff;
 
     &.router-link-exact-active {
-      color: #c00000;
+      color: #ffffff;
     }
   }
 }

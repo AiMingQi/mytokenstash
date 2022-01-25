@@ -70,10 +70,3 @@ import ipfsVersions from "../previousSiteVersions.json"
   }
 </script>
 
-
-
-
-
-<style>
-a {color: #c00000 !important;}
-</style>
