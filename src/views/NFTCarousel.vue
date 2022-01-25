@@ -49,6 +49,8 @@
         <v-row>
         <v-col cols="12" sm="4">
         <v-btn class="ma-5" to="/nft-list" dark>List Mode</v-btn>
+        <!-- Directive  -->
+        <v-btn class="ma-5" v-fullscreen dark>fullscreen</v-btn >
         <v-btn class="ma-5" @click="cycle = true" v-show="!cycle" dark>Start Cycle</v-btn>
         <v-btn class="ma-5" @click="cycle = false" v-show="cycle" dark>Stop Cycle</v-btn>
         <v-btn class="ma-5" color="black" @click="color = 'black'" v-show="!cycle" dark>Black BG</v-btn>
@@ -69,7 +71,7 @@
          <v-slider
           v-model="slideInterval"
           hint="Im a hint"
-          max="10000"
+          max="100000"
           min="100"
           color="purple"
         ></v-slider>
@@ -82,7 +84,9 @@
 </template>
 
 <script>
-
+import VueFullscreen from 'vue-fullscreen'
+  import Vue from 'vue'
+  Vue.use(VueFullscreen)
   import { clusterApiUrl, solanaWeb3 } from "@solana/web3.js";
 //   import { Connection, clusterApiUrl, LAMPORTS_PER_SOL } from "@solana/web3.js";
   import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";

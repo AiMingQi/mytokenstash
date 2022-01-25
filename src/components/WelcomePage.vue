@@ -7,7 +7,7 @@
           <v-row justify="center">
             <v-col cols="12" sm="3">
             <div>
-              <v-img class="ma-5" src="https://gateway.pinata.cloud/ipfs/QmNk52WAqD6FmebfiXepvoLM7JQC6NPgSDEhx6re4mHEtj" max-width="240px" color="black" alt="logo"/>
+              <v-img class="ma-5" src="../assets/MyTokenStash-Logo.svg" max-width="420px" color="black" alt="logo"/>
             </div>
             </v-col>
             <v-col cols="12" sm="9">
@@ -22,48 +22,7 @@
           </v-row>
           <br>
           </v-card>
-          <v-card dark class="pa-3">
-          <v-row justify="center" v-show="$store.state.ownerAddress == 'no current user'" >
-            <v-col cols="10">
-              <v-text-field 
-                v-model="LookupAccount" 
-                :rules="[rules.required, rules.counter]"
-                width="100%"
-                auto-grow
-                rows="2"
-                row-height="20"
-                label="Enter a Valid Solana Address"
-              ></v-text-field>
-        </v-col>
-
-
-            <v-col cols="12" md="6" sm="4">
-              <v-btn color="light-blue" dark @click="setOwnerAddress"> Lookup Account </v-btn>
-            </v-col>
-          </v-row>
-          <v-row justify="center">
-            <h1 v-show="$store.state.ownerAddress == 'no current user'">OR</h1>
-          </v-row>
-          <v-row justify="center" class="mt-5 mb-3">
-            <v-btn color="green" @click="getOwnerAddress" v-show="$store.state.ownerAddress == 'no current user'" dark>Connect Solana Wallet</v-btn>
-            <p v-show="$store.state.ownerAddress !== 'no current user'">Connected <br> <strong>{{$store.state.ownerAddress}}</strong> <br> This is the current wallet address.</p>
-          </v-row>
-            <div v-show="$store.state.ownerAddress !== 'no current user'">
-            <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
-            </div>
-          <v-row justify="center">
-
-          <v-col cols="12" sm="6">
-          <v-select
-            :items="this.$store.state.networkChoices"
-            label="Change network"
-            @change="setNetwork"
-            v-model="network"
-            max-width="200px"
-          ></v-select>
-          </v-col>
-          </v-row>
-        </v-card>
+          <lookup-form></lookup-form>
       </v-col>
 
         <v-col cols="12" lg="7" sm="12">
@@ -118,11 +77,13 @@
 </template>
 
 <script>
-
+import LookupForm from '../components/SolanaLookupForm.vue'
   import * as solanaWeb3 from '@solana/web3.js';
   export default {
     name: 'WelcomePage',
-
+    components: {
+      LookupForm
+    },
     data: () => ({
       ownerAddress: '',
       rules: {
