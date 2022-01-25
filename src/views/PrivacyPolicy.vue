@@ -38,6 +38,8 @@
             Important Resources:
           </v-card-title>
           <v-card-text>
+            <h2>Donate to the Developer:</h2>
+            <p>86BGByDdDZfC9ZZAp1zkU3nQECKSw9H5R7wmw56FtzeZ</p>
             <h3><a class="text--red" href="https://github.com/aimingqi/mytokenstash" target="_blank"><v-icon x-large>mdi-github</v-icon></a> All code is found at our public github repo.</h3>
           </v-card-text>
         </v-card>
