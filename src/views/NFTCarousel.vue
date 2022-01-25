@@ -40,8 +40,22 @@
                     :height="imageHeight"
                     aspect-ratio="1"
                     contain
-                    class="ma-5"
+                    class="ma-5 align-start"
                     ></v-img>
+                    <v-overlay
+                      :absolute="absolute"
+                      :value="overlay"
+                      opacity="0"
+                    class="align-start pa-5"
+                    >
+                    <h2 class="blue--text">{{nft.res.data.name}}</h2>
+                    <v-chip-group
+                    column
+                    >
+                      <v-chip class="d-flex-inline float-bottom" :key="attribute.index" v-for="attribute in nft.res.data.attributes">{{attribute.trait_type}} : {{attribute.value}}</v-chip>
+                    </v-chip-group>
+                    </v-overlay>
+                    
                 </v-sheet>
             </v-carousel-item>
         </v-carousel>
@@ -49,8 +63,25 @@
         <v-row>
         <!-- Directive  -->
         <v-card-text>
-        <v-btn class="ma-5" to="/nft-list" dark x-large>List Mode</v-btn>
         <v-btn color="purple" class="ma-5 d-flex-inline" v-fullscreen dark>fullscreen</v-btn >
+        <v-btn class="ma-5" to="/nft-list" dark x-large>List Mode</v-btn>
+
+        <v-btn
+          color="success"
+          class="ma-5"
+          @click="overlay = !overlay"
+          v-show="!overlay"
+        >
+          Show Overlay
+        </v-btn>
+        <v-btn
+          class="ma-5"
+          color="success"
+          @click="overlay = false"
+          v-show="overlay"
+        >
+          Hide Overlay
+        </v-btn>
         <p>Image Height: {{imageHeight}} px</p>
          <v-slider
           v-model="imageHeight"
@@ -79,6 +110,9 @@
         </v-row>
         </v-card>
       </v-col>
+      <v-col cols="2">
+        
+      </v-col>
       </v-row>
     </v-container>   
 </template>
@@ -96,12 +130,12 @@ import VueFullscreen from 'vue-fullscreen'
     components: {
     },
     data: () => ({
-        slideInterval: 5000,
-    hasTokens: false,
+      absolute: true,
+      slideInterval: 5000,
+      hasTokens: false,
       cycle: false,
       imageHeight: 900,
-        color: "white",
-        model: 0,
+      color: "white",
       cardWidth: 500,
       validTransferAddress: false,
       overlay: false,
