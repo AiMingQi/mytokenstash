@@ -54,7 +54,7 @@
         <p>Image Height: {{imageHeight}} px</p>
          <v-slider
           v-model="imageHeight"
-          hint="Im a hint"
+          hint="By adjusting the height of the image you can lock in the size you want for Fullscreen"
           max="2160"
           min="240"
           step="60"
@@ -66,7 +66,7 @@
         <p>Slide Duration: {{slideIntervalSeconds}} seconds</p>
          <v-slider
           v-model="slideInterval"
-          hint="Im a hint"
+          hint="Set the time for slide transitions"
           max="600000"
           min="1000"
           step="1000"
@@ -99,7 +99,7 @@ import VueFullscreen from 'vue-fullscreen'
         slideInterval: 5000,
     hasTokens: false,
       cycle: false,
-      imageHeight: 960,
+      imageHeight: 900,
         color: "white",
         model: 0,
       cardWidth: 500,
