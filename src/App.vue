@@ -34,7 +34,7 @@
       <v-spacer></v-spacer>
       
       <v-spacer></v-spacer>
-      <p>{{this.$store.state.network}} ~ version: <strong>0.9.0</strong></p>
+      <p>{{this.$store.state.network}} ~ version: <strong>0.9.1</strong></p>
       <v-spacer></v-spacer>
       <v-btn to="/privacy-policy">Privacy Policy</v-btn>
       <v-spacer></v-spacer>
