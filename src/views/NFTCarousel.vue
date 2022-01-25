@@ -46,14 +46,18 @@
                       :absolute="absolute"
                       :value="overlay"
                       opacity="0"
-                    class="align-start pa-5"
+                    class="ma-5 align-start"
                     >
-                    <h2 class="blue--text">{{nft.res.data.name}}</h2>
+                    <v-row dense>
+                    <v-chip class="align-start pa-5 blue--text" x-large><h2>{{nft.res.data.name}}</h2></v-chip>
+                   
                     <v-chip-group
                     column
+                    class="align-end mt-auto ml-5"
                     >
-                      <v-chip class="d-flex-inline float-bottom" :key="attribute.index" v-for="attribute in nft.res.data.attributes">{{attribute.trait_type}} : {{attribute.value}}</v-chip>
+                      <v-chip class="d-flex-inline align-end pa-5" :key="attribute.index" v-for="attribute in nft.res.data.attributes"><strong>{{attribute.trait_type}}</strong> : {{attribute.value}}</v-chip>
                     </v-chip-group>
+                    </v-row >
                     </v-overlay>
                     
                 </v-sheet>
@@ -88,7 +92,7 @@
           hint="By adjusting the height of the image you can lock in the size you want for Fullscreen"
           max="2160"
           min="240"
-          step="60"
+          step="20"
           color="green"
         ></v-slider>
         <p>Background: {{color}}</p>
