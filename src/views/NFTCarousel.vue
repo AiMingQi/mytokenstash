@@ -8,7 +8,7 @@
           </v-card>
             <v-carousel
                 :cycle="cycle"
-                :interval="slideInterval"
+                :interval="slideIntervalSeconds*1000"
                 height="100%"
                 hide-delimiter-background
                 show-arrows-on-hover
@@ -57,18 +57,21 @@
           hint="Im a hint"
           max="2160"
           min="240"
+          step="60"
           color="green"
         ></v-slider>
+        <p>Background: {{color}}</p>
         <v-btn class="ma-5 d-flex-inline" color="black" @click="color = 'black'" v-show="!cycle" dark>Black BG</v-btn>
         <v-btn class="ma-5 d-flex-inline" color="white" @click="color = 'white'" v-show="!cycle">White BG</v-btn>
-        <p>Slide Duration: {{slideInterval / 1000}} seconds</p>
+        <p>Slide Duration: {{slideIntervalSeconds}} seconds</p>
          <v-slider
           v-model="slideInterval"
           hint="Im a hint"
-          max="60000"
+          max="600000"
           min="1000"
+          step="1000"
           color="purple"
-          
+          v-show="!cycle"
         ></v-slider>
         <v-btn class="ma-5 d-flex-inline" @click="cycle = true" v-show="!cycle" dark>Start Carousel Cycle</v-btn>
         <v-btn class="ma-5 d-flex-inline" @click="cycle = false" v-show="cycle" dark>Stop Cycle</v-btn>
@@ -173,6 +176,11 @@ import VueFullscreen from 'vue-fullscreen'
           console.log('checkTransferAddress')
         },
         
+    },
+    computed: {
+      slideIntervalSeconds () {
+        return this.slideInterval / 1000
+      }
     }
   }
 </script>
