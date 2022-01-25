@@ -47,35 +47,32 @@
         </v-carousel>
         <v-card class="mx-auto mt-5" width="80%">
         <v-row>
-        <v-col cols="12" sm="4">
-        <v-btn class="ma-5" to="/nft-list" dark>List Mode</v-btn>
         <!-- Directive  -->
-        <v-btn class="ma-5" v-fullscreen dark>fullscreen</v-btn >
-        <v-btn class="ma-5" @click="cycle = true" v-show="!cycle" dark>Start Cycle</v-btn>
-        <v-btn class="ma-5" @click="cycle = false" v-show="cycle" dark>Stop Cycle</v-btn>
-        <v-btn class="ma-5" color="black" @click="color = 'black'" v-show="!cycle" dark>Black BG</v-btn>
-        <v-btn class="ma-5" color="white" @click="color = 'white'" v-show="!cycle">White BG</v-btn>
-        </v-col>
-        <v-col cols="12" sm="3">
-        Image Height: {{imageHeight}} px
+        <v-card-text>
+        <v-btn class="ma-5" to="/nft-list" dark x-large>List Mode</v-btn>
+        <v-btn color="purple" class="ma-5 d-flex-inline" v-fullscreen dark>fullscreen</v-btn >
+        <p>Image Height: {{imageHeight}} px</p>
          <v-slider
           v-model="imageHeight"
           hint="Im a hint"
-          max="1920"
+          max="2160"
           min="240"
           color="green"
         ></v-slider>
-        </v-col>
-        <v-col cols="12" sm="3">
-        {{slideInterval / 1000}} seconds
+        <v-btn class="ma-5 d-flex-inline" color="black" @click="color = 'black'" v-show="!cycle" dark>Black BG</v-btn>
+        <v-btn class="ma-5 d-flex-inline" color="white" @click="color = 'white'" v-show="!cycle">White BG</v-btn>
+        <p>Slide Duration: {{slideInterval / 1000}} seconds</p>
          <v-slider
           v-model="slideInterval"
           hint="Im a hint"
-          max="100000"
-          min="100"
+          max="60000"
+          min="1000"
           color="purple"
+          
         ></v-slider>
-        </v-col>
+        <v-btn class="ma-5 d-flex-inline" @click="cycle = true" v-show="!cycle" dark>Start Carousel Cycle</v-btn>
+        <v-btn class="ma-5 d-flex-inline" @click="cycle = false" v-show="cycle" dark>Stop Cycle</v-btn>
+        </v-card-text>
         </v-row>
         </v-card>
       </v-col>

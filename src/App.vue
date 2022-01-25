@@ -5,6 +5,7 @@
     color="#c00000"
     dark
     hide-on-scroll
+    dense
     >
       <div class="d-flex align-center" >
        <v-btn to="/" icon plain>
@@ -19,19 +20,11 @@
         />
         </v-btn>
       </div>
-      <v-btn class="mx-3 d-none d-sm-flex" to="/" >Home</v-btn>
       <v-spacer></v-spacer>
-      <v-btn class="mx-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== 'no current user'">Clear Wallet</v-btn>
-      <p v-show="$store.state.ownerAddress !== 'no current user'" class="d-none d-sm-flex">{{$store.state.ownerAddress}}</p>
+      
+      <p v-show="$store.state.ownerAddress !== ''" class="d-none d-sm-flex">{{$store.state.ownerAddress}}</p>
       <v-spacer></v-spacer>
-      <v-btn
-        href="https://www.coinbase.com/join/crumb_8"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Get Solana</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-btn class="mx-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== ''">Clear Wallet</v-btn>
     </v-app-bar>
     <v-main>
       <router-view/>
@@ -39,12 +32,21 @@
     <v-footer dark>
       <p>© 2022 MyTokenStash </p>
       <v-spacer></v-spacer>
+      
       <v-spacer></v-spacer>
-      {{this.$store.state.network}}
-      <v-spacer></v-spacer>
-      <p>version: <strong>0.8.4</strong></p>
+      <p>{{this.$store.state.network}} ~ version: <strong>0.8.4</strong></p>
       <v-spacer></v-spacer>
       <v-btn to="/privacy-policy">Privacy Policy</v-btn>
+      <v-spacer></v-spacer>
+      <v-btn
+      color="#c00000"
+        href="https://www.coinbase.com/join/crumb_8"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Get Solana</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
     </v-footer>
   </v-app>
 </template>
@@ -73,7 +75,7 @@
         // true
       },
       clearOwnerAddress () {
-        this.$store.commit('updateOwnerAddress', 'no current user')
+        this.$store.commit('updateOwnerAddress', '')
       }
     }
   }

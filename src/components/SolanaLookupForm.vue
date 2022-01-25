@@ -1,6 +1,6 @@
 <template>
 <v-card dark class="pa-3">
-          <v-row justify="center" v-show="$store.state.ownerAddress == 'no current user'" >
+          <v-row justify="center" v-show="$store.state.ownerAddress == ''" >
             <v-col cols="10">
               <v-text-field 
                 v-model="LookupAccount" 
@@ -19,13 +19,13 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-            <h1 v-show="$store.state.ownerAddress == 'no current user'">OR</h1>
+            <h1 v-show="$store.state.ownerAddress == ''">OR</h1>
           </v-row>
           <v-row justify="center" class="mt-5 mb-3">
-            <v-btn color="green" @click="getOwnerAddress" v-show="$store.state.ownerAddress == 'no current user'" dark>Connect Solana Wallet</v-btn>
-            <p v-show="$store.state.ownerAddress !== 'no current user'">Connected <br> <strong>{{$store.state.ownerAddress}}</strong> <br> This is the current wallet address.</p>
+            <v-btn color="green" @click="getOwnerAddress" v-show="$store.state.ownerAddress == ''" dark>Connect Solana Wallet</v-btn>
+            <p v-show="$store.state.ownerAddress !== ''">Connected <br> <strong>{{$store.state.ownerAddress}}</strong> <br> This is the current wallet address.</p>
           </v-row>
-            <div v-show="$store.state.ownerAddress !== 'no current user'">
+            <div v-show="$store.state.ownerAddress !== ''">
             <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
             </div>
           <v-row justify="center">
