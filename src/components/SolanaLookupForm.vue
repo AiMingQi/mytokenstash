@@ -38,6 +38,9 @@
             v-model="network"
             max-width="200px"
           ></v-select>
+          <h5>View MyTokenStash or Donate Solana to the Developer:</h5>
+            
+            <h6>86BGByDdDZfC9ZZAp1zkU3nQECKSw9H5R7wmw56FtzeZ</h6>
           </v-col>
           </v-row>
         </v-card>
