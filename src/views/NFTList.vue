@@ -23,7 +23,10 @@
             <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
           </v-card>
          <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" :width="cardWidth" dark>
-            <v-card-title>{{nft.nft.data.name}}</v-card-title>
+            <v-card-title>{{nft.nft.data.name}}
+              <v-spacer></v-spacer>
+              <v-btn color="green" dark :href="nft.res.data.image" target="_blank">Image Source</v-btn>  
+            </v-card-title>
             <v-card-text>
             <v-img 
             lazy-src="src/assets/game-baby.png"
@@ -52,26 +55,29 @@
             </template>
             </v-img>
                 </v-card-text>
-            <v-card-actions>
-              <v-btn color="green" dark :href="nft.res.data.image" target="_blank">Image Source</v-btn>  
-              <v-spacer></v-spacer>
-              
-            </v-card-actions>
             <v-expand-transition>
             <v-card
               v-if="reveal"
               class="transition-fast-in-fast-out v-card--reveal"
             >
+              <v-card-text>
+                <v-chip-group
+                  column
+                  class="align-end mt-auto ml-5"
+                  >
+                  <v-chip class="d-flex-inline align-end pa-5" :key="attribute.index" v-for="attribute in nft.res.data.attributes"><strong class="orange--text">{{attribute.trait_type}}</strong> : {{attribute.value}}</v-chip>
+                </v-chip-group>
+                
+              </v-card-text>
               <v-card-text class="pb-0">
-                <span class="green--text">Symbol:</span> {{nft.res.data.symbol}}<br>
-                <span class="green--text">Copyright:</span> {{nft.res.data.copyright}} <br>
+                <span class="green--text"><strong>Symbol:</strong></span> {{nft.res.data.symbol}}<br>
                 <br>
-                <span class="purple--text">Description:</span> {{nft.res.data.description}} <br>
+                <span class="purple--text"><strong>Description:</strong></span> {{nft.res.data.description}} <br>
+                <br>
+                <span class="yellow--text"><strong>Copyright:</strong></span> {{nft.res.data.copyright}} <br>
               </v-card-text>
-              <v-card-text class="pb-0" :key="attribute.index" v-for="attribute in nft.res.data.attributes">
-                <span class="red--text">Trait Type:</span> {{attribute.trait_type}}<br>
-                <span class="red--text">Value:</span> {{attribute.value}}<br>
-              </v-card-text>
+                
+
               <v-card-text class="pb-0">
                 <span class="blue--text">Token Address:</span> {{nft.nft.mint}} <br>
                 <span class="blue--text">Contract Address:</span> {{nft.nft.updateAuthority}} <br>
