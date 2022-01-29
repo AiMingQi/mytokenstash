@@ -4,8 +4,10 @@
         app
         v-model="drawer"
       >
-      <v-btn class="ma-3" color="black" dark to="/"><v-icon></v-icon>Home</v-btn>
-      <v-btn class="ma-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== []">Clear Accounts</v-btn>
+      <v-btn class="my-3" color="black" dark to="/" block><v-icon></v-icon>Home</v-btn>
+      <v-btn class="my-3" color="black" dark to="/nft-list" block><v-icon></v-icon>NFT List</v-btn>
+      <v-btn class="my-3" color="black" dark to="/nft-list" block><v-icon></v-icon>NFT Carousel</v-btn>
+      <v-btn class="my-3" color="#c00000" dark @click="clearOwnerAddress" block>Clear Accounts</v-btn>
         <v-list
           dense
           rounded
@@ -20,6 +22,14 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+        <v-card class="align-end">
+          <v-card-title>
+          <h4 class="mx-auto">Donate Solana <br>to the Developer</h4>
+          </v-card-title>
+          <v-card-text>
+          <h5>86BGByDdDZfC9ZZAp1zkU3nQECKSw9H5R7wmw56FtzeZ</h5>
+          </v-card-text>
+        </v-card>
       </v-navigation-drawer>
     <v-app-bar
     app
