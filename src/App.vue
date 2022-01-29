@@ -1,5 +1,26 @@
 <template>
   <v-app>
+      <v-navigation-drawer
+        app
+        v-model="drawer"
+      >
+      <v-btn class="ma-3" color="black" dark to="/"><v-icon></v-icon>Home</v-btn>
+      <v-btn class="ma-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== []">Clear Accounts</v-btn>
+        <v-list
+          dense
+          rounded
+        >
+          <v-list-item
+            v-for="account in this.$store.state.lookupAddresses"
+            :key="account.address"
+          >
+            <v-list-item-content>
+              <v-list-item-title>{{ account.nickname }}</v-list-item-title>
+              <v-list-item-subtitle>{{ account.address }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
     <v-app-bar
     app
     color="#c00000"
@@ -8,7 +29,7 @@
     dense
     >
       <div class="d-flex align-center" >
-       <v-btn to="/" icon plain>
+       <v-btn @click="drawer = !drawer" icon plain>
         <v-img
           alt="the-game logo"
           class="shrink mr-2"
@@ -20,11 +41,7 @@
         />
         </v-btn>
       </div>
-      <v-spacer></v-spacer>
       
-      <p v-show="$store.state.ownerAddress !== ''" class="d-none d-sm-flex">{{$store.state.ownerAddress}}</p>
-      <v-spacer></v-spacer>
-      <v-btn class="mx-3" color="#c00000" dark @click="clearOwnerAddress" v-show="$store.state.ownerAddress !== ''">Clear Wallet</v-btn>
     </v-app-bar>
     <v-main>
       <router-view/>
@@ -56,7 +73,12 @@
   import * as solanaWeb3 from '@solana/web3.js';
   export default {
     data: () => ({
+      drawer: null,
       ownerAddress: '',
+       items: [
+          { title: 'Home', icon: 'mdi-view-dashboard' },
+          { title: 'About', icon: 'mdi-forum' },
+        ],
     }),
     mounted () {
       console.log(solanaWeb3);
@@ -75,7 +97,8 @@
         // true
       },
       clearOwnerAddress () {
-        this.$store.commit('updateOwnerAddress', '')
+        this.$store.commit('clearAddresses')
+        console.log(this.$store.state.lookupAddresses)
       }
     }
   }

@@ -1,9 +1,19 @@
 <template>
 <v-card dark class="pa-3">
-          <v-row justify="center" v-show="$store.state.ownerAddress == ''" >
-            <v-col cols="10">
+          <v-row justify="center" >
+            <v-col cols="3">
               <v-text-field 
-                v-model="LookupAccount" 
+                v-model="lookupAddress.nickname" 
+                width="100%"
+                auto-grow
+                rows="2"
+                row-height="20"
+                label="Enter Account Nickname"
+              ></v-text-field>
+        </v-col>
+            <v-col cols="7">
+              <v-text-field 
+                v-model="lookupAddress.address" 
                 :rules="[rules.required, rules.counter]"
                 width="100%"
                 auto-grow
@@ -19,13 +29,13 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-            <h1 v-show="$store.state.ownerAddress == ''">OR</h1>
+            <h1 v-if="$store.state.lookupAddresses">OR</h1>
           </v-row>
           <v-row justify="center" class="mt-5 mb-3">
-            <v-btn color="green" @click="getOwnerAddress" v-show="$store.state.ownerAddress == ''" dark>Connect Solana Wallet</v-btn>
-            <p v-show="$store.state.ownerAddress !== ''">Connected <br> <strong>{{$store.state.ownerAddress}}</strong> <br> This is the current wallet address.</p>
+            <v-btn color="green" @click="getOwnerAddress" v-if="$store.state.lookupAddresses" dark>Connect Solana Wallet</v-btn>
+            <p v-if="!$store.state.lookupAddresses">Connected <br> <strong>{{$store.state.lookupAddresses[0].nickname}}</strong> <br> This is the current wallet address.</p>
           </v-row>
-            <div v-show="$store.state.ownerAddress !== ''">
+            <div v-if="!$store.state.lookupAddresses">
             <v-btn class="mx-3 mt-5 font-weight-bold" color="purple" to="/nft-list" dark>View Token Stash</v-btn>
             </div>
           <v-row justify="center">
@@ -50,28 +60,31 @@
 
 <script>
 
-  import * as solanaWeb3 from '@solana/web3.js';
   export default {
     name: 'WelcomePage',
 
     data: () => ({
+      lookupAddress: {
+        nickname: '',
+        address: ''
+      },
       ownerAddress: '',
       rules: {
           required: value => !!value || 'Required.',
           counter: value => value.length == 44 || 'Must be a Valid Solana Address',
         },
       network: '',
-      LookupAccount: '',
     }),
     mounted () {
-      console.log(solanaWeb3);
       console.log(this.$store.state.ownerAddress);
     },
     methods: {
       async getOwnerAddress(){
         try {
           const resp = await window.solana.connect();
-          this.$store.state.ownerAddress = resp.publicKey.toString()
+          let walletAddress = resp.publicKey.toString()
+          let newWallet = { nickname: "Browser Wallet", address: walletAddress}
+          this.$store.commit('updateLookupAddresses', newWallet)
           console.log(resp.publicKey.toString())
           // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo 
         } catch (err) {
@@ -80,8 +93,9 @@
         // true
       },
       setOwnerAddress () {
-        if (this.LookupAccount.length == 44) {
-        this.$store.commit('updateOwnerAddress', this.LookupAccount)
+        if (this.lookupAddress.address.length == 44) {
+        console.log("addresslookup",this.$store.state.lookupAddresses)
+        this.lookupAddress = [{nickname: '', address: ''}]
         } else {
           console.log('not the right size')
         }

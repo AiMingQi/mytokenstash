@@ -87,46 +87,21 @@
             </v-card>
           </v-expand-transition>    
          </v-card>
-         <v-overlay
-          :z-index="zIndex"
-          :value="overlay"
-            >
-            <v-card width="100%">
-              <v-card-title>Transfer Token</v-card-title>
-              <v-card-text>
-                  <transfer-token></transfer-token>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn
-                  class="white--text"
-                  color="teal"
-                  @click="overlay = false"
-                >
-                  Cancel
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          
-        </v-overlay>
-      </v-row>
+        </v-row>
     </v-col>
   </v-container>
 </template>
 
 <script>
 
-  import { clusterApiUrl, solanaWeb3 } from "@solana/web3.js";
+  import { clusterApiUrl} from "@solana/web3.js";
 //   import { Connection, clusterApiUrl, LAMPORTS_PER_SOL } from "@solana/web3.js";
   import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";
   import axios from "axios";
-  import TransferToken from '../components/TransferToken.vue';
 
   export default {
-    hasTokens: false,
-    components: {
-    TransferToken
-    },
     data: () => ({
+    hasTokens: false,
       cardWidth: 500,
       validTransferAddress: false,
       overlay: false,
@@ -136,6 +111,7 @@
       ownerAddress: '',
       nfts: {},
       solanaNftMetadata: [],
+      lookupAddresses: this.$store.state.lookupAddresses,
       arUrl: '',
       rules: {
           required: value => !!value || 'Required.',
@@ -143,8 +119,7 @@
         },
     }),
     mounted () {
-        console.log(solanaWeb3);
-        console.log(this.$store.state.ownerAddress);
+        console.log(this.$store.state.lookupAddresses);
         this.getAllNftData();
     },
     created (){

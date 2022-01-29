@@ -12,13 +12,29 @@ export default new Vuex.Store({
       'testnet',
       'mainnet-beta',
     ],
+    lookupAddresses: [
+      {
+        nickname: '',
+        address: ''
+      }
+    ],
+    nftCollection: []
   },
   mutations: {
     updateNetwork (state, network) {
       state.network = network
     },
-    updateOwnerAddress (state, ownerAddress) {
-      state.ownerAddress = ownerAddress
+    updateLookupAddresses (state, lookupAddress) {
+      state.lookupAddresses.push(lookupAddress)
+    },
+    addNft (state, nft) {
+      state.nftCollection.push(nft)
+    },
+    clearNftCollection (state) {
+      state.nftCollection = []
+    },
+    clearAddresses (state) {
+      state.lookupAddresses = []
     }
   },
   actions: {
