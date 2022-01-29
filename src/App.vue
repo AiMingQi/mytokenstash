@@ -6,7 +6,7 @@
       >
       <v-btn class="my-3" color="black" dark to="/" block><v-icon></v-icon>Home</v-btn>
       <v-btn class="my-3" color="black" dark to="/nft-list" block><v-icon></v-icon>NFT List</v-btn>
-      <v-btn class="my-3" color="black" dark to="/nft-list" block><v-icon></v-icon>NFT Carousel</v-btn>
+      <v-btn class="my-3" color="black" dark to="/nft-carousel" block><v-icon></v-icon>NFT Carousel</v-btn>
       <v-btn class="my-3" color="#c00000" dark @click="clearOwnerAddress" block>Clear Accounts</v-btn>
         <v-list
           dense
