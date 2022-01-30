@@ -49,13 +49,14 @@
                     class="ma-5 align-start"
                     >
                     <v-row dense>
-                    <v-chip class="align-start pa-5 blue--text" x-large><h2>{{nft.res.data.name}}</h2></v-chip>
+                    <v-chip class="align-start pa-5" large><h2>{{nft.address.nickname}}</h2></v-chip>
+                    <v-chip class="align-start pa-5 blue--text ml-2" x-large><h2>{{nft.res.data.name}}</h2></v-chip>
                    
                     <v-chip-group
                     column
                     class="align-end mt-auto ml-5"
                     >
-                      <v-chip class="d-flex-inline align-end pa-5" :key="attribute.index" v-for="attribute in nft.res.data.attributes"><strong>{{attribute.trait_type}}</strong> : {{attribute.value}}</v-chip>
+                      <v-chip class="d-flex-inline align-end pa-5" :key="attribute.index" v-for="attribute in nft.res.data.attributes"><strong class="yellow--text">{{attribute.trait_type}}</strong> : {{attribute.value}}</v-chip>
                     </v-chip-group>
                     </v-row >
                     </v-overlay>
@@ -125,7 +126,7 @@
 import VueFullscreen from 'vue-fullscreen'
   import Vue from 'vue'
   Vue.use(VueFullscreen)
-  import { clusterApiUrl, solanaWeb3 } from "@solana/web3.js";
+  import { clusterApiUrl} from "@solana/web3.js";
 //   import { Connection, clusterApiUrl, LAMPORTS_PER_SOL } from "@solana/web3.js";
   import { getParsedNftAccountsByOwner,isValidSolanaAddress, createConnectionConfig,} from "@nfteyez/sol-rayz";
   import axios from "axios";
@@ -156,18 +157,19 @@ import VueFullscreen from 'vue-fullscreen'
         },
     }),
     mounted () {
-        console.log(solanaWeb3);
-        console.log(this.$store.state.ownerAddress);
-        this.getAllNftData();
+        this.lookupAddresses = this.$store.state.lookupAddresses
+        console.log("localaddys",this.lookupAddresses);
+        
+        this.lookupAddresses.forEach(address => this.getAllNftData(address));
     },
     created (){
       //  this.getAllNftData();
     },
     methods: {
-        async getAllNftData () {
+        async getAllNftData (address) {
             try {
                 const connect =    createConnectionConfig(clusterApiUrl(this.$store.state.network));
-                let ownerToken = this.$store.state.ownerAddress;
+                let ownerToken = address.address;
                 const result = isValidSolanaAddress(ownerToken);
                 console.log("result", result);
                 const nfts = await getParsedNftAccountsByOwner({
@@ -177,14 +179,14 @@ import VueFullscreen from 'vue-fullscreen'
                 });
                 // console.log('nfts',nfts)
                 this.nfts = nfts;
-                this.getArweaveMeta();
+                this.getArweaveMeta(address);
             } catch (error) {
             console.log(error);
             }
         },
-        async getArweaveMeta () {
+        async getArweaveMeta (address) {
         try {
-            this.nfts.forEach(nft => axios.get(nft.data.uri).then(res => { this.solanaNftMetadata.push({nft,res}); } ));
+            this.nfts.forEach(nft => axios.get(nft.data.uri).then(res => { this.solanaNftMetadata.push({nft,res,address}); } ));
             console.log("metacapture",this.solanaNftMetadata)
             this.hasTokens = true;
         } catch (err) {

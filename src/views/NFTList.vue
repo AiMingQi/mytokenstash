@@ -23,9 +23,10 @@
             <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
           </v-card>
          <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" :width="cardWidth" dark>
-            <v-card-title>{{nft.nft.data.name}}
+            <v-card-title>
+              <div class="ml-2">{{nft.nft.data.name}}</div>
               <v-spacer></v-spacer>
-              <v-btn color="green" dark :href="nft.res.data.image" target="_blank">Image Source</v-btn>  
+              <v-chip>{{nft.address.nickname}}</v-chip>
             </v-card-title>
             <v-card-text>
             <v-img 
@@ -82,7 +83,8 @@
                 <span class="blue--text">Token Address:</span> {{nft.nft.mint}} <br>
                 <span class="blue--text">Contract Address:</span> {{nft.nft.updateAuthority}} <br>
               </v-card-text>
-              <v-card-actions class="pt-0">
+              <v-card-actions>
+                <v-btn class="ma-2 float-right" color="green" dark :href="nft.res.data.image" target="_blank">Image Source</v-btn>  
               </v-card-actions>
             </v-card>
           </v-expand-transition>    
@@ -111,7 +113,12 @@
       ownerAddress: '',
       nfts: {},
       solanaNftMetadata: [],
-      lookupAddresses: this.$store.state.lookupAddresses,
+      lookupAddresses: [
+        {
+          nickname: '',
+          address: ''
+        }
+      ],
       arUrl: '',
       rules: {
           required: value => !!value || 'Required.',
@@ -119,17 +126,19 @@
         },
     }),
     mounted () {
-        console.log(this.$store.state.lookupAddresses);
-        this.getAllNftData();
+        this.lookupAddresses = this.$store.state.lookupAddresses
+        console.log("localaddys",this.lookupAddresses);
+        
+        this.lookupAddresses.forEach(address => this.getAllNftData(address));
     },
     created (){
       //  this.getAllNftData();
     },
     methods: {
-        async getAllNftData () {
+        async getAllNftData (address) {
             try {
                 const connect =    createConnectionConfig(clusterApiUrl(this.$store.state.network));
-                let ownerToken = this.$store.state.ownerAddress;
+                let ownerToken = address.address;
                 const result = isValidSolanaAddress(ownerToken);
                 console.log("result", result);
                 const nfts = await getParsedNftAccountsByOwner({
@@ -139,14 +148,14 @@
                 });
                 // console.log('nfts',nfts)
                 this.nfts = nfts;
-                this.getArweaveMeta();
+                this.getArweaveMeta(address);
             } catch (error) {
             console.log(error);
             }
         },
-        async getArweaveMeta () {
+        async getArweaveMeta (address) {
         try {
-            this.nfts.forEach(nft => axios.get(nft.data.uri).then(res => { this.solanaNftMetadata.push({nft,res}); } ));
+            this.nfts.forEach(nft => axios.get(nft.data.uri).then(res => { this.solanaNftMetadata.push({nft,res,address}); } ));
             console.log("metacapture",this.solanaNftMetadata)
             this.hasTokens = true;
         } catch (err) {
@@ -176,6 +185,9 @@
           console.log('checkTransferAddress')
         },
         
+    },
+    computed: {
+
     }
   }
 </script>

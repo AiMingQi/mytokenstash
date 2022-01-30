@@ -12,13 +12,13 @@ export default new Vuex.Store({
       'testnet',
       'mainnet-beta',
     ],
-    lookupAddresses: [
-      {
-        nickname: '',
-        address: ''
-      }
-    ],
+    lookupAddresses: [],
     nftCollection: []
+  },
+  getters: {
+    getAddressByNickname: (state) => (nickname) => {
+      return state.lookupAddresses.find(address => address.nickname === nickname)
+    }
   },
   mutations: {
     updateNetwork (state, network) {

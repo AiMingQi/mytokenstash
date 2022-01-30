@@ -23,11 +23,14 @@
           </v-list-item>
         </v-list>
         <v-card class="align-end">
-          <v-card-title>
-          <h4 class="mx-auto">Donate Solana <br>to the Developer</h4>
-          </v-card-title>
           <v-card-text>
+          <h3 class="mx-auto my-2">
+          Donate Solana or NFTs
+          </h3>
           <h5>86BGByDdDZfC9ZZAp1zkU3nQECKSw9H5R7wmw56FtzeZ</h5>
+          <h3 class="mx-auto my-2">
+          to the Developer
+          </h3>
           </v-card-text>
         </v-card>
       </v-navigation-drawer>
