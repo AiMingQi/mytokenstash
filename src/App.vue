@@ -17,7 +17,7 @@
             :key="account.address"
           >
             <v-list-item-content>
-              <v-list-item-title>{{ account.nickname }}</v-list-item-title>
+              <v-list-item-title><v-chip>{{ account.nickname }}</v-chip></v-list-item-title>
               <v-list-item-subtitle>{{ account.address }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
