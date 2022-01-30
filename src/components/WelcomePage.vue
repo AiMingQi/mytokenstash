@@ -118,20 +118,20 @@ import LookupForm from '../components/SolanaLookupForm.vue'
           imageUrl: 'https://www.arweave.net/6-EzR99DYcj5iwweCi9GJZhaIv1ueSNFfCl_LJUrIPM?ext=PNG',
         },
         { 
-          hype: "High Art",
-          cardTheme: true,
-          priority: "3",
-          type: 'NFT Collection',
-          linkUrl: 'https://solsea.io/collection/616eee186c530ec596bb1027',
-          imageUrl: 'https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU',
-        },
-        { 
           hype: "Game Changer",
           cardTheme: false,
           priority: "4",
           type: 'NFT',
           linkUrl: 'https://solsea.io/nft/8gXneZeFoKbKrSsbZCdD4SW6upn7e6EHoJTiM6cF3jd8',
           imageUrl: 'https://www.arweave.net/b9rL4huLrx5KrBtooLPkIG5TAzrH1YA7WY9N92oO-Ps?ext=PNG',
+        },
+        { 
+          hype: "High Art",
+          cardTheme: true,
+          priority: "3",
+          type: 'NFT Collection',
+          linkUrl: 'https://solsea.io/collection/616eee186c530ec596bb1027',
+          imageUrl: 'https://gateway.pinata.cloud/ipfs/QmcXQ5TbQS2acHoGZkAUNVxN5nshXuSzcVQghdwyjAp2RU',
         },
         { 
           hype: "Life Changing",
