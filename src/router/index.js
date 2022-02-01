@@ -73,6 +73,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "NFTResources" */ '../views/NFTResources.vue')
+  },
+  {
+    path: '/nft-candy-machine-shop',
+    name: 'CandyMachines',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "CandyMachines" */ '../views/CandyMachines.vue')
   }
 ]
     
