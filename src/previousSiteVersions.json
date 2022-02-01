@@ -34,5 +34,9 @@
         { 
             "number": "0.10.0",
             "siteHash": "QmYv2ribjXCCZosEwFt6wgQ8EDyoxcWxy6QV8eA8LbNKeL"
+        },
+        { 
+            "number": "0.10.1",
+            "siteHash": "QmRUmXJF7gteX5srd6T46vnrn1cig5THeAiRqMs72TEfgB"
         }
 ]
