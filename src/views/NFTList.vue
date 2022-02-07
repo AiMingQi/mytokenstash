@@ -21,12 +21,15 @@
             <v-card-title>Loading the Stash...</v-card-title>
             <v-card-text>Either you don't have any NFTs in this account, or they are still loading... Decentralized storage can take a moment, so please be patient if you know there are actually NFTs in this account.</v-card-text>
           </v-card>
-         <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" :width="cardWidth" dark>
+         <v-card v-for="nft in solanaNftMetadata" :key="nft.index" class="mx-auto my-12" :width="cardWidth" :dark="nft.address.type == 'Browser Wallet Verified'">
             <v-card-title>
               <div class="ml-2">{{nft.nft.data.name}}</div>
               <v-spacer></v-spacer>
               <v-chip>{{nft.address.nickname}}</v-chip>
             </v-card-title>
+            <v-card-subtitle>
+            <h6>{{nft.address.type}}</h6>
+            </v-card-subtitle>
             <v-card-text>
             <v-img 
             lazy-src="src/assets/game-baby.png"

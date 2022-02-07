@@ -78,7 +78,6 @@
 
 <script>
 import LookupForm from '../components/SolanaLookupForm.vue'
-  import * as solanaWeb3 from '@solana/web3.js';
   export default {
     name: 'WelcomePage',
     components: {
@@ -144,8 +143,6 @@ import LookupForm from '../components/SolanaLookupForm.vue'
       ]
     }),
     mounted () {
-      console.log(solanaWeb3);
-      console.log(this.$store.state.ownerAddress);
     },
     methods: {
       async getOwnerAddress(){

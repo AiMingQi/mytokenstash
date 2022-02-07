@@ -60,7 +60,8 @@
     data: () => ({
       lookupAddress: {
         nickname: '',
-        address: ''
+        address: '',
+        type: 'Lookup Form'
       },
       ownerAddress: '',
       rules: {
@@ -77,7 +78,7 @@
         try {
           const resp = await window.solana.connect();
           let walletAddress = resp.publicKey.toString()
-          let newWallet = { nickname: "Browser Wallet", address: walletAddress}
+          let newWallet = { nickname: "Browser Wallet", address: walletAddress, type: "Browser Wallet Verified"}
           this.$store.commit('updateLookupAddresses', newWallet)
           console.log(resp.publicKey.toString())
           // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo 
